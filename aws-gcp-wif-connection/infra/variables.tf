@@ -20,3 +20,15 @@ variable "environment" {
   type        = string
   default     = "dev"
 }
+
+variable "project_name" {
+  description = "Project name"
+  type        = string
+  default     = "wif-test"
+}
+
+variable "gcp_location" {
+  description = "Selected GCP location"
+  type        = string
+  default     = "US"
+}

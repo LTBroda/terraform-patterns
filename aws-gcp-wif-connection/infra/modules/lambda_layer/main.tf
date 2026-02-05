@@ -15,13 +15,17 @@ resource "null_resource" "build_layer" {
       # Install Python dependencies
       if [ -f "${var.requirements_file}" ]; then
         echo "Installing dependencies from ${var.requirements_file}..."
-        pip install -r ${var.requirements_file} -t ${local.python_dir} --upgrade --no-cache-dir
+        pip install -r ${var.requirements_file} -t ${local.python_dir} \
+          --platform manylinux2014_x86_64 \
+          --only-binary=:all: \
+          --upgrade \
+          --no-cache-dir
       fi
 
       # Copy shared modules if provided
-      if [ -n "${var.shared_modules_path}" ] && [ -d "${var.shared_modules_path}" ]; then
-        echo "Copying shared modules from ${var.shared_modules_path}..."
-        cp -r ${var.shared_modules_path}/* ${local.python_dir}/
+      if [ -n "${var.shared_modules_path != null ? var.shared_modules_path : ""}" ] && [ -d "${var.shared_modules_path != null ? var.shared_modules_path : ""}" ]; then
+        echo "Copying shared modules from ${var.shared_modules_path != null ? var.shared_modules_path : ""}..."
+        cp -r ${var.shared_modules_path != null ? var.shared_modules_path : ""}/* ${local.python_dir}/
       fi
 
       echo "Layer build completed successfully"
