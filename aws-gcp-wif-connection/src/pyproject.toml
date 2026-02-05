@@ -1,0 +1,18 @@
+[project]
+name = "aws-gcp-wif-connection"
+version = "0.1.0"
+description = "Example code for creating AWS to GCP connection using WIF"
+authors = [
+    {name = "Łukasz Broda",email = "l.t.broda@gmail.com"}
+]
+license = {text = "MIT"}
+requires-python = ">=3.13"
+dependencies = [
+    "google-cloud-bigquery (>=3.40.0,<4.0.0)",
+    "aws-lambda-powertools (>=3.24.0,<4.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
