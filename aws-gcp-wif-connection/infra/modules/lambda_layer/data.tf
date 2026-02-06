@@ -1,4 +1,3 @@
-# Archive the layer contents
 data "archive_file" "layer_zip" {
   type        = "zip"
   source_dir  = local.build_dir
