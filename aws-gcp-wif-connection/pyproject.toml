@@ -16,3 +16,43 @@ aws-lambda-powertools = ">=3.24.0,<4.0.0"
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
+
+[dependency-groups]
+dev = [
+    "ruff (>=0.15.0,<0.16.0)",
+    "isort (>=7.0.0,<8.0.0)",
+    "pre-commit (>=4.5.1,<5.0.0)",
+    "mypy (>=1.15.0,<2.0.0)"
+]
+
+[tool.mypy]
+python_version = "3.13"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+strict_equality = true
+strict_optional = true
+
+[tool.ruff]
+target-version = "py313"
+line-length = 100
+
+[tool.ruff.lint]
+select = [
+    "E",      # pycodestyle errors
+    "W",      # pycodestyle warnings
+    "F",      # pyflakes
+    "I",      # isort
+    "UP",     # pyupgrade
+    "ANN",    # flake8-annotations
+    "B",      # flake8-bugbear
+    "C4",     # flake8-comprehensions
+    "RET",    # flake8-return
+    "SIM",    # flake8-simplify
+]
